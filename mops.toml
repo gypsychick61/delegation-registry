@@ -1,0 +1,17 @@
+[package]
+name = "delegation-registry"
+version = "0.1.0"
+description = "Agent Delegation Registry MCP server for the Prometheus Protocol app store — scoped, expiring, revocable grants from a principal to an agent, with ckUSDC spending the registry enforces on-chain"
+
+[dependencies]
+base = "0.16.0"
+json = "1.4.0"
+map = "9.0.1"
+http-types = "1.0.1"
+ic = "3.2.0"
+mcp-motoko-sdk = "2.0.2"
+sha2 = "0.1.6"
+base16 = "1.0.0"
+
+[toolchain]
+moc = "0.16.0"

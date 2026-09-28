@@ -1,0 +1,19 @@
+{
+  "canisters": {
+    "delegation_registry": {
+      "type": "motoko",
+      "main": "src/main.mo"
+    },
+    "test_ledger": {
+      "type": "custom",
+      "wasm": "local-ledger/ic-icrc1-ledger.wasm.gz",
+      "candid": "local-ledger/ledger.did"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  },
+  "output_env_file": ".env"
+}

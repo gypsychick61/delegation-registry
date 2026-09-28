@@ -1,0 +1,9 @@
+.mops/
+.dfx/
+.env
+node_modules/
+out/
+.icp/
+local-ledger/
+.DS_Store
+*.wasm.gz
