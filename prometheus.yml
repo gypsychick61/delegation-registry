@@ -1,0 +1,45 @@
+name: delegation-registry
+namespace: io.github.gypsychick61.delegation-registry
+title: Agent Delegation Registry
+version: 0.1.0
+description: Give an agent its own key and a set of rules, like "up to 20 ckUSDC per payment, 50 a week, only to these stores, until December." Spending is enforced on-chain, every other permission can be checked by anyone, and one pause stops everything.
+category: Finance
+mcp_path: /mcp
+repo_url: https://github.com/gypsychick61/delegation-registry
+payment: null
+tags: [delegation, permissions, spending-limits, agents, icrc2, ckusdc, security]
+submission:
+  name: Agent Delegation Registry
+  description: Give an agent its own key and a set of rules, like "up to 20 ckUSDC per payment, 50 a week, only to these stores, until December." Spending is enforced on-chain, every other permission can be checked by anyone, and one pause stops everything.
+  publisher: gypsychick61
+  category: Finance
+  deployment_type: global
+  repo_url: https://github.com/gypsychick61/delegation-registry
+  mcp_path: /mcp
+  why_this_app: >-
+    An agent that can pay usually holds its owner's key, so it can do anything
+    the owner can, and the only limit is what the prompt says. That is fine
+    for a demo and a real risk for payroll, bills, or a household budget. This
+    registry replaces trusting the prompt with rules the chain enforces. The
+    owner issues the agent its own principal and key, approves one ckUSDC
+    allowance to the registry, and writes grants with a per-payment cap, a
+    period budget, a recipient list, and an expiry. Agents can only pay through
+    the registry, which checks the grant before the ledger sees a transfer,
+    and the allowance is a second ceiling the ledger enforces by itself.
+    Non-money permissions, such as signing contracts or accepting bookings,
+    are recorded the same way and can be checked by any other app or agent
+    before it trusts yours.
+  key_features:
+    - Agents get their own key — add_agent issues a fresh principal and API key, so an agent never holds its owner's key and can do exactly what it is granted and nothing more.
+    - Spending enforced on-chain — per-payment caps, weekly or monthly budgets, recipient allowlists, and mandatory expiry are all checked before icrc2_transfer_from, with the budget reserved before the ledger call so simultaneous payments can't overspend.
+    - Two walls — the owner's ICRC-2 allowance is a ledger-enforced ceiling on top of the grants, and spending_status gives the exact approve call to match them.
+    - Permissions anyone can check — action grants like 'contract.sign' carry limits and named counterparties; agents record each use, and any app can ask check_permission before trusting an agent.
+    - Kill switch and full record — pause an agent to stop every grant at once; every payment, use, refusal, and third-party check lands in the owner's activity log.
+  tags: [delegation, permissions, spending-limits, agents, icrc2, ckusdc, security]
+  visuals:
+    icon_url: https://github.com/gypsychick61/delegation-registry/releases/download/v0.1.0-assets/icon-delegation-registry.webp
+    banner_url: https://github.com/gypsychick61/delegation-registry/releases/download/v0.1.0-assets/banner-delegation-registry.webp
+    gallery_images:
+      - https://github.com/gypsychick61/delegation-registry/releases/download/v0.1.0-assets/banner-delegation-registry.webp
+  git_commit: a4b455425dda0fa44b025add264b000fe4ca71e5
+  wasm_path: .dfx/local/canisters/delegation_registry/delegation_registry.wasm
